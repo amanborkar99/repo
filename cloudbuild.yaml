@@ -1,0 +1,16 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'my-python-app', '.']
+
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['tag', 'my-python-app', 'asia-south1-docker.pkg.dev/windy-tiger-314015/my-repo/my-python-app:v1']
+
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'asia-south1-docker.pkg.dev/windy-tiger-314015/my-repo/my-python-app:v1']
+
+# - name: 'gcr.io/cloud-builders/gcloud'
+#   args: ['run', 'deploy', 'python-app',
+#          '--image', 'us-central1-docker.pkg.dev/$PROJECT_ID/my-repo/python-app',
+#          '--region', 'us-central1',
+#          '--platform', 'managed',
+#          '--allow-unauthenticated']
